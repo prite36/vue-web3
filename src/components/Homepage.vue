@@ -101,7 +101,7 @@
 import axios from 'axios'
 import moment from 'moment-timezone'
 export default {
-  name: 'HelloWorld',
+  name: 'Homepage',
   props: {
     msg: String
   },
@@ -126,7 +126,7 @@ export default {
   beforeMount() {
    let vm = this
    setInterval(async () => {
-     let { data } = await axios.get('http://localhost:3001/ethBlock')
+     let { data } = await axios.get('https://learn-web3.herokuapp.com/ethBlock')
      vm.blockNumber = data.blockNumber
      vm.networkType = data.networkType
    }, 3000)
@@ -135,7 +135,7 @@ export default {
  methods: {
    async getTransactionsHistory() {
      this.loading = true
-     let { data } = await axios.get(`http://localhost:3001/transactionsHistory/${this.ethAddress}`)
+     let { data } = await axios.get(`https://learn-web3.herokuapp.com/transactionsHistory/${this.ethAddress}`)
      this.transactionsHistory = data
      this.loading = false
    },
